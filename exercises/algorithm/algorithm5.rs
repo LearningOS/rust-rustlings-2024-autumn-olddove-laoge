@@ -17,7 +17,7 @@ impl Graph {
         Graph {
             adj: vec![vec![]; n],
         }
-    }
+    }  
 
     // Add an edge to the graph
     fn add_edge(&mut self, src: usize, dest: usize) {
