@@ -47,7 +47,7 @@ impl<T> LinkedList<T> {
     pub fn add(&mut self, obj: T) {
         let mut node = Box::new(Node::new(obj));
         node.next = None;
-        let node_ptr = Some(unsafe { NonNull::new_unchecked(Box::into_raw(node)) });
+        let node_ptr cd= Some(unsafe { NonNull::new_unchecked(Box::into_raw(node)) });
         match self.end {
             None => self.start = node_ptr,
             Some(end_ptr) => unsafe { (*end_ptr.as_ptr()).next = node_ptr },
@@ -62,7 +62,8 @@ impl<T> LinkedList<T> {
 
     fn get_ith_node(&mut self, node: Option<NonNull<Node<T>>>, index: i32) -> Option<&T> {
         match node {
-            None => None,
+            None => None,  
+            
             Some(next_ptr) => match index {
                 0 => Some(unsafe { &(*next_ptr.as_ptr()).val }),
                 _ => self.get_ith_node(unsafe { (*next_ptr.as_ptr()).next }, index - 1),
@@ -102,10 +103,10 @@ where
             None => write!(f, "{}", self.val),
         }
     }
-}
+}  
 
 #[cfg(test)]
-mod tests {
+mod tests {  
     use super::LinkedList;
 
     #[test]
