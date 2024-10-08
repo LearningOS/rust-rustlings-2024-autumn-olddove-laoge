@@ -22,6 +22,7 @@ unsafe fn raw_pointer_to_box(ptr: *mut Foo) -> Box<Foo> {
     // simply reconstruct the box from that pointer.
     let mut ret: Box<Foo> = unsafe { ??? };
     todo!("The rest of the code goes here")
+    
 }
 
 #[cfg(test)]
